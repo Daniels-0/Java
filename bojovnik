@@ -1,0 +1,42 @@
+public class Bojovnik {
+    private String meno;
+    private int zivot;
+    private int maxZivot;
+    private int utok;
+    private int obrana;
+    private Kocka kocka;
+
+    public Bojovnik(String meno, int zivot, int maxZivot,
+                    int utok, int obrana, Kocka kocka) {
+        this.meno = meno;
+        this.maxZivot = maxZivot;
+        this.zivot = zivot;
+        this.utok = utok;
+        this.obrana = obrana;
+        this.kocka = kocka;
+    }
+
+    public String toString(){
+        return meno;
+    }
+    public boolean nazive(){
+        return  (zivot > 0);
+    }
+    public String grafZivot(){
+        String s = "[";
+        int celkom = 20;
+        double pocet = Math.round((double) (zivot/maxZivot) * celkom);
+        if (pocet == 0 && nazive()){
+            pocet = 1;
+        }
+        for (int i = 0; i < pocet; i++){
+            s += "#";
+        }
+
+        for (int i = 0; i < celkom - pocet; i++){
+            s += " ";
+        }
+        s+= "]";
+        return s;
+    }
+}
